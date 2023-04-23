@@ -29,7 +29,8 @@ class Product {
   // Get all products
   static getAll() {
     return new Promise((resolve, reject) => {
-      db.all('SELECT * FROM product', [], (err, rows) => {
+      db.all(`SELECT p.id, p.name, p.price, c.name as category_name 
+              FROM product p JOIN category c ON c.id = p.category_id`, [], (err, rows) => {
         if (err) {
           reject(err);
         } else {
@@ -56,7 +57,7 @@ class Product {
   static updateById(id, name, category, image_url, price) {
     return new Promise((resolve, reject) => {
       db.run(
-        'UPDATE product SET name = ?, category = ?, image_url = ?, price = ? WHERE id = ?',
+        'UPDATE product SET name = ?, category_id = ?, image_url = ?, price = ? WHERE id = ?',
         [name, category, image_url, price, id],
         (err) => {
           if (err) {
@@ -77,6 +78,21 @@ class Product {
           reject(err);
         } else {
           resolve();
+        }
+      });
+    });
+  }
+
+  // Get all products by Category
+  static getAllByCategoryId(categoryId) {
+    return new Promise((resolve, reject) => {
+      db.all(`SELECT p.id, p.name, p.price, c.name as category_name 
+              FROM product p JOIN category c ON c.id = p.category_id
+              WHERE category_id = ?`, [categoryId], (err, rows) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(rows);
         }
       });
     });
