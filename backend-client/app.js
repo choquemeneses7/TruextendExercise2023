@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const productRoutes = require('./routes/product');
+const categoryRoutes = require('./routes/category');
 
 const app = express();
 
@@ -10,6 +11,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use('/api/products', productRoutes);
+app.use('/api/categories', categoryRoutes);
 
 // Error handler middleware
 app.use((err, req, res, next) => {

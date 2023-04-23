@@ -2,7 +2,7 @@ import axios from 'axios';
 import { Product, NewProduct } from '../types/Product';
 import { Category } from '../types/Category';
 
-const API_BASE_URL = 'http://localhost:3001';
+const API_BASE_URL = 'http://localhost:3001/api';
 
 export async function fetchProducts(): Promise<Product[]> {
   const response = await axios.get(`${API_BASE_URL}/products`);

@@ -29,7 +29,7 @@ class Product {
   // Get all products
   static getAll() {
     return new Promise((resolve, reject) => {
-      db.all(`SELECT p.id, p.name, p.price, c.name as category_name 
+      db.all(`SELECT p.id, p.name, p.price, c.name as category_name, p.image 
               FROM product p JOIN category c ON c.id = p.category_id`, [], (err, rows) => {
         if (err) {
           reject(err);

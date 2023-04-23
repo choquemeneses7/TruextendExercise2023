@@ -41,16 +41,12 @@ let db = new sqlite3.Database(DBSOURCE, (err) => {
         // Table already created
         } else {
             // Table just created, create some rows
-            var insertCategory = 'INSERT INTO category (name) VALUES (?)';
-            db.run(insertCategory, ["Electronics"]);
-            db.run(insertCategory, ["Clothing"]);
-
             console.error("Adding rows to table product");
             var insert = 'INSERT INTO product (name, category_id, image, price) VALUES (?,?,?,?)';
             db.run(insert, ["Mobile phone", 1, "https://cdn.pixabay.com/photo/2017/04/03/15/52/mobile-phone-2198770_960_720.png", 1400.78]);
-            db.run(insert, ["Laptop", 1, "https://cdn.pixabay.com/photo/2014/05/02/21/50/home-office-336378_960_720.jpg", 900]);
-            db.run(insert, ["T-Shirt", 2, "https://cdn.pixabay.com/photo/2017/08/06/21/32/t-shirt-2595908_960_720.jpg", 25.99]);
-            db.run(insert, ["Jeans", 2, "https://cdn.pixabay.com/photo/2016/03/26/22/10/jeans-1281679_960_720.jpg", 60.5]);
+            db.run(insert, ["Laptop", 1, "https://sysbol.com/1939-large_default/laptop-hp-14-intel-core-i3-1005g1-4gb-sdram-128gb-ssd-gold.jpg", 900]);
+            db.run(insert, ["T-Shirt", 2, "https://image.uniqlo.com/UQ/ST3/WesternCommon/imagesgoods/422990/item/goods_09_422990.jpg?width=750", 25.99]);
+            db.run(insert, ["Jeans", 2, "https://world.sisley.com/dw/image/v2/BBSF_PRD/on/demandware.static/-/Sites-sy-master/default/dwf00368cf/images/Full_PDP_v/Sisley_23P_45BGLE024_901_FS_Full_PDP_v.jpg?sw=1267&sh=1690", 60.5]);
         }
     });
    
