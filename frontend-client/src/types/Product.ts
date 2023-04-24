@@ -8,7 +8,7 @@ export interface Product {
   
   export interface NewProduct {
     name: string;
-    category: string;
+    category_id: number;
     image: string;
     price: number;
   }

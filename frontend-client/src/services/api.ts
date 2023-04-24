@@ -22,3 +22,8 @@ export async function createProduct(newProduct: NewProduct): Promise<Product> {
 export async function deleteProduct(productId: number): Promise<void> {
   await axios.delete(`${API_BASE_URL}/products/${productId}`);
 }
+
+export async function fetchProductById(productId: number): Promise<Product> {
+    const response = await axios.get(`${API_BASE_URL}/products/${productId}`);
+    return response.data;
+  }

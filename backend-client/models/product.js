@@ -2,19 +2,19 @@ const db = require('../config/db');
 
 // Product model
 class Product {
-  constructor(name, category, image_url, price) {
+  constructor(name, category_id, image, price) {
     this.name = name;
-    this.category = category;
-    this.image_url = image_url;
+    this.category_id = category_id;
+    this.image = image;
     this.price = price;
   }
 
   // Create a new product
-  static create(name, category, image_url, price) {
+  static create(product) {
     return new Promise((resolve, reject) => {
       db.run(
-        'INSERT INTO product (name, category, image_url, price) VALUES (?, ?, ?, ?)',
-        [name, category, image_url, price],
+        'INSERT INTO product (name, category_id, image, price) VALUES (?, ?, ?, ?)',
+        [product.name, product.category_id, product.image, product.price],
         function (err) {
           if (err) {
             reject(err);
@@ -54,11 +54,11 @@ class Product {
   }
 
   // Update product by ID
-  static updateById(id, name, category, image_url, price) {
+  static updateById(id, name, category_id, image, price) {
     return new Promise((resolve, reject) => {
       db.run(
-        'UPDATE product SET name = ?, category_id = ?, image_url = ?, price = ? WHERE id = ?',
-        [name, category, image_url, price, id],
+        'UPDATE product SET name = ?, category_id = ?, image = ?, price = ? WHERE id = ?',
+        [name, category_id, image, price, id],
         (err) => {
           if (err) {
             reject(err);
