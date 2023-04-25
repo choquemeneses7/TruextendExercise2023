@@ -1,4 +1,4 @@
-import { Card, CardActionArea, CardContent, CardMedia, Grid, makeStyles, Typography, CardActions, Button, Dialog, DialogTitle, DialogContent, DialogActions } from "@material-ui/core";
+import { Card, CardActionArea, CardContent, CardMedia, makeStyles, Typography, CardActions, Button, Dialog, DialogTitle, DialogContent, DialogActions } from "@material-ui/core";
 import { Product } from "../types/Product";
 import { useNavigate } from "react-router-dom";
 import DeleteIcon from '@mui/icons-material/Delete';

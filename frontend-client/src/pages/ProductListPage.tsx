@@ -5,7 +5,7 @@ import { Product } from "../types/Product";
 import { Category } from "../types/Category";
 import ProductCard from "../components/ProductCard";
 import { fetchProducts, fetchCategories } from "../services/api";
-import { Box, CircularProgress, Grid, Typography, Button, Dialog, DialogTitle, DialogContent } from "@material-ui/core";
+import { Box, CircularProgress, Grid, Button, Dialog, DialogTitle, DialogContent } from "@material-ui/core";
 import CreateProductForm from "../components/CreateProductForm";
 import './ProductListPage.css'
 import Error from "../components/Error";
@@ -103,7 +103,7 @@ const ProductListPage = () => {
                     </Tabs>
                 </Grid>
                 <div className="create-button">
-                    <Button variant="contained" color="primary" onClick={handleFormOpen}>
+                    <Button id="create" variant="contained" color="primary" onClick={handleFormOpen}>
                             Create
                     </Button>
                 </div>

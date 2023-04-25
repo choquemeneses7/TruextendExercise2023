@@ -2,7 +2,6 @@ const Product = require('../models/product');
 
 // Create a new product
 exports.createProduct = async (req, res) => {
-  console.log(req.body)
   try {
     const product = await Product.create(req.body);
     res.status(201).json(product);
@@ -26,7 +25,6 @@ exports.getProducts = async (req, res) => {
 // Get product by ID
 exports.getProductById = async (req, res) => {
   try {
-    console.log(req)
     const product = await Product.getById(req.params.id);
     if (!product) {
       return res.status(404).json({ message: 'Product not found' });

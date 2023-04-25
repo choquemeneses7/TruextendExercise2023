@@ -1,11 +1,8 @@
 import React, { useState } from "react";
-import {
-  Button, TextField, Select, MenuItem, InputLabel, FormControl, makeStyles} from "@material-ui/core";
+import { Button, TextField, Select, MenuItem, InputLabel, FormControl, makeStyles} from "@material-ui/core";
 import { Category } from "../types/Category";
-import axios from "axios";
 import { createProduct } from "../services/api";
 import { NewProduct } from '../types/Product';
-import Error from "./Error";
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -29,7 +26,6 @@ const CreateProductForm: React.FC<Props> = ({ categories, onCreate }) => {
   const [price, setPrice] = useState<number | "">(0);
   const [categoryId, setCategoryId] = useState<number | "">("");
   const [image, setImage] = useState<string>("");
-  const [serverErrors, setServerErrors] = useState<string[]>([]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -48,7 +44,7 @@ const CreateProductForm: React.FC<Props> = ({ categories, onCreate }) => {
       setCategoryId("");
       setImage("");
     } catch (error) {
-        console.log("exrror: ", error)
+        console.log(error)
     }
   };
 
@@ -58,21 +54,25 @@ const CreateProductForm: React.FC<Props> = ({ categories, onCreate }) => {
         required
         label="Product Name"
         value={productName}
+        id="name"
         onChange={(e) => setProductName(e.target.value)}
       />
       <TextField
         required
         label="Price"
         type="number"
+        id="price"
         value={price}
         onChange={(e) => setPrice(parseFloat(e.target.value) as number)}
       />
       <FormControl className={classes.formControl}>
-        <InputLabel>Category</InputLabel>
+        <InputLabel id="category">Category</InputLabel>
         <Select
+          label="category"
           required
           value={categoryId}
           onChange={(e) => setCategoryId(e.target.value as number)}
+          aria-labelledby="category"
         >
           {categories.map((category) => (
             <MenuItem key={category.id} value={category.id}>
@@ -85,9 +85,10 @@ const CreateProductForm: React.FC<Props> = ({ categories, onCreate }) => {
         required
         label="Image URL"
         value={image}
+        id="image"
         onChange={(e) => setImage(e.target.value)}
       />
-      <Button type="submit" variant="contained" color="primary">
+      <Button id="create" type="submit" variant="contained" color="primary">
         Create
       </Button>
     </form>
