@@ -84,21 +84,6 @@ class Product {
       });
     });
   }
-
-  // Get all products by Category
-  static getAllByCategoryId(categoryId) {
-    return new Promise((resolve, reject) => {
-      db.all(`SELECT p.id, p.name, p.price, c.name as category_name 
-              FROM product p JOIN category c ON c.id = p.category_id
-              WHERE category_id = ?`, [categoryId], (err, rows) => {
-        if (err) {
-          reject(err);
-        } else {
-          resolve(rows);
-        }
-      });
-    });
-  }
 }
 
 module.exports = Product;
