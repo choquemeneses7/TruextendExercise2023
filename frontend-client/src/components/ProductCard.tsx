@@ -39,7 +39,7 @@ const ProductCard = ({ product, onDelete }: Props) => {
         onDelete();
     }
 
-    const handleCancelDialogOpen = (productId:number) => {
+    const handleCancelDialogOpen = (productId: number) => {
         setIsCancelDialogOpen(true);
         setProductIdToDelete(productId);
     };
@@ -62,22 +62,22 @@ const ProductCard = ({ product, onDelete }: Props) => {
                 </CardActionArea>
                 <CardActions disableSpacing>
                     <Button size="small" color="primary" onClick={handleClick}> View Details </Button>
-                    <IconButton aria-label="delete" onClick={() => {handleCancelDialogOpen(product.id)}}>
-                        <DeleteIcon color="error"/>
+                    <IconButton aria-label="delete" onClick={() => { handleCancelDialogOpen(product.id) }}>
+                        <DeleteIcon color="error" />
                     </IconButton>
                 </CardActions>
             </Card>
             <Dialog open={isCancelDialogOpen} onClose={handleCancelDialogClose}>
                 <DialogTitle>{t('productCardComponentDialogTitle')}</DialogTitle>
                 <DialogContent>
-                {t('productCardComponentDialogContent')}
+                    {t('productCardComponentDialogContent')}
                 </DialogContent>
                 <DialogActions>
                     <Button autoFocus color="secondary" onClick={handleCancelDialogClose}>
-                    {t('productCardComponentDialogCancel')}
+                        {t('productCardComponentDialogCancel')}
                     </Button>
                     <Button autoFocus color="primary" onClick={deleteProductById} >
-                    {t('productCardComponentDialogConfirm')}
+                        {t('productCardComponentDialogConfirm')}
                     </Button>
                 </DialogActions>
             </Dialog>

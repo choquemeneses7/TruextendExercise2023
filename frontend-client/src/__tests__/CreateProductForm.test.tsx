@@ -15,9 +15,9 @@ const dom = new JSDOM('<!doctype html><html><body></body></html>');
 global.document = dom.window.document;
 
 describe("CreateProductForm", () => {
-    const categories: Category[] = [{ name: "Electronics", id: 1  }]  
+  const categories: Category[] = [{ name: "Electronics", id: 1 }]
   it("renders form with correct fields", () => {
-    render(<CreateProductForm onCreate={() => {}} categories={categories}/>);
+    render(<CreateProductForm onCreate={() => { }} categories={categories} />);
 
     expect(screen.getByLabelText(/name/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/image/i)).toBeInTheDocument();
@@ -27,7 +27,7 @@ describe("CreateProductForm", () => {
   });
 
   it("displays error message when form is submitted with invalid values", () => {
-    render(<CreateProductForm onCreate={() => {}} categories={categories}/>);
+    render(<CreateProductForm onCreate={() => { }} categories={categories} />);
 
     fireEvent.change(screen.getByLabelText(/name/i), { target: { value: "" } });
     fireEvent.change(screen.getByLabelText(/image/i), { target: { value: "" } });

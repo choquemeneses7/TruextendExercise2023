@@ -65,18 +65,3 @@ exports.deleteProductById = async (req, res) => {
     res.status(500).json({ message: 'Internal server error' });
   }
 };
-
-// Get products by Category ID
-exports.getProductsByCategoryId = async (req, res) => {
-    try {
-      const product = await Product.getAllByCategoryId(req.params.id);
-      if (!product) {
-        return res.status(404).json({ message: 'Product not found' });
-      }
-      await product.destroy();
-      res.status(204).json({ message: 'Product deleted successfully' });
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: 'Internal server error' });
-    }
-  };

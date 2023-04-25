@@ -1,11 +1,13 @@
-.create-button{
+.create-button {
     text-align: right;
     width: 100%;
     padding: 7px 20px 7px;
 }
-.category-products-tab{
+
+.category-products-tab {
     text-align: -webkit-center;
 }
-.all-products-tab{
+
+.all-products-tab {
     text-align: -webkit-center;
 }

@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const productRoutes = require('./routes/product');
 const categoryRoutes = require('./routes/category');
-const {swaggerDocs} = require('./routes/swagger')
+const { swaggerDocs } = require('./routes/swagger')
 
 const app = express();
 
@@ -16,10 +16,10 @@ app.use('/api/categories', categoryRoutes);
 
 // Error handler middleware
 app.use((err, req, res, next) => {
-    console.error(err.stack);
-    res.status(500).json({ message: 'Something went wrong' });
-  });
-  
+  console.error(err.stack);
+  res.status(500).json({ message: 'Something went wrong' });
+});
+
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {

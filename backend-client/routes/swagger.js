@@ -4,7 +4,7 @@ const swaggerUi = require("swagger-ui-express")
 const options = {
     definition: {
         openapi: "3.0.0",
-        info:{ title: "Catalog API", version: "1.0.0" }
+        info: { title: "Catalog API", version: "1.0.0" }
     },
     apis: ['routes/product.js', 'routes/category.js'],
 };
@@ -21,4 +21,4 @@ const swaggerDocs = (app, port) => {
     console.log('Version 1 Docs are available at http://localhost:3001/api/v1/docs')
 }
 
-module.exports = {swaggerDocs}
+module.exports = { swaggerDocs }

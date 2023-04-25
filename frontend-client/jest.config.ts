@@ -14,11 +14,11 @@ const config: Config.InitialOptions = {
   setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect'],
   globals: {
     "ts-jest": {
-       tsConfigFile: "tsconfig.json"
-     },
-     TextEncoder: require("util").TextEncoder,
-     TextDecoder: require("util").TextDecoder
- },
+      tsConfigFile: "tsconfig.json"
+    },
+    TextEncoder: require("util").TextEncoder,
+    TextDecoder: require("util").TextDecoder
+  },
 };
 
 export default config;

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, TextField, Select, MenuItem, InputLabel, FormControl, makeStyles} from "@material-ui/core";
+import { Button, TextField, Select, MenuItem, InputLabel, FormControl, makeStyles } from "@material-ui/core";
 import { Category } from "../types/Category";
 import { createProduct } from "../services/api";
 import { NewProduct } from '../types/Product';
@@ -33,7 +33,7 @@ const CreateProductForm: React.FC<Props> = ({ categories, onCreate }) => {
     e.preventDefault();
 
     try {
-      let newProduct:NewProduct = {
+      let newProduct: NewProduct = {
         name: productName,
         price: Number(price),
         category_id: Number(categoryId),
@@ -46,7 +46,7 @@ const CreateProductForm: React.FC<Props> = ({ categories, onCreate }) => {
       setCategoryId("");
       setImage("");
     } catch (error) {
-        console.log(error)
+      console.log(error)
     }
   };
 

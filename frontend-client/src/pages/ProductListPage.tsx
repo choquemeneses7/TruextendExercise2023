@@ -115,7 +115,7 @@ const ProductListPage = () => {
                 </Grid>
                 <div className="create-button">
                     <Button id="create" variant="contained" color="primary" onClick={handleFormOpen}>
-                    {t('productListPageCreate')}
+                        {t('productListPageCreate')}
                     </Button>
                 </div>
             </Grid>
@@ -158,7 +158,7 @@ const ProductListPage = () => {
                         {renderProductCards("All")}
                     </Grid>
                 </div>
-            </Box>  
+            </Box>
             <ErrorHandler error={error}></ErrorHandler>
         </div>
     );

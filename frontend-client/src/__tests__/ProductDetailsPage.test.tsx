@@ -16,7 +16,7 @@ describe('ProductDetailsPage', () => {
     render(
       <MemoryRouter initialEntries={[`/products/${product.id}`]}>
         <Routes>
-            <Route path="/products/:productId" element={<ProductDetailsPage/>}/>
+          <Route path="/products/:productId" element={<ProductDetailsPage />} />
         </Routes>
       </MemoryRouter>
     );
