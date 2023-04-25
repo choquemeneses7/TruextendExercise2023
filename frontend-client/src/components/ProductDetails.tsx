@@ -1,15 +1,15 @@
 import { Box, Button, Card, CardContent, CardMedia, Typography } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import { Product } from "../types/Product";
+import './ProductDetails.css'
 
 type Props = {
   product: Product;
 };
 
 const ProductDetails = ({ product }: Props) => {
-  console.log(product)
   return (
-    <Box>
+    <Box className="product-detail-container">
       <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
         <Typography variant="h4">{product.name}</Typography>
         <Typography variant="h6">Price: {product.price}€</Typography>

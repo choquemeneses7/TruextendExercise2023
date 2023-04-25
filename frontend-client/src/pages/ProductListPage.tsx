@@ -8,6 +8,7 @@ import { fetchProducts, fetchCategories } from "../services/api";
 import { Box, CircularProgress, Grid, Typography, Button, Dialog, DialogTitle, DialogContent } from "@material-ui/core";
 import CreateProductForm from "../components/CreateProductForm";
 import './ProductListPage.css'
+import Error from "../components/Error";
 
 const ProductListPage = () => {
     const [tabIndex, setTabIndex] = useState(0);
@@ -23,13 +24,13 @@ const ProductListPage = () => {
 
     async function fetchProductsData() {
         const productList = await fetchProducts();
-        setProducts(productList);
+        productList ? setProducts(productList) : setProducts([]);
         setIsLoading(false);
     }
 
     async function fetchCategoriesData() {
         const categoryList = await fetchCategories();
-        setCategories(categoryList);
+        categoryList ? setCategories(categoryList) : setCategories([]);
     }
 
 
@@ -41,7 +42,7 @@ const ProductListPage = () => {
         if (category === "All") {
             return products;
         } else {
-            return products.filter((product) => product.category_name === category);
+            return products.length > 0 ? products.filter((product) => product.category_name === category) : products;
         }
     };
 
@@ -83,7 +84,7 @@ const ProductListPage = () => {
                         onChange={handleTabChange}
                         aria-label="Product categories"
                     >
-                        {categories.map((category, index) => (
+                        {categories ? (categories.map((category, index) => (
                             <Tab
                                 key={category.id}
                                 label={category.name}
@@ -91,11 +92,11 @@ const ProductListPage = () => {
                                 id={`category-tab-${index}`}
                                 aria-controls={`category-tabpanel-${index}`}
                             />
-                        ))}
+                        ))) : <></>}
                         <Tab
                             key="all-products-tab"
                             label="All"
-                            value={categories.length}
+                            value={categories ? categories.length : 0}
                             id={`all-products-tab`}
                             aria-controls={`all-products-tabpanel`}
                         />
@@ -107,6 +108,7 @@ const ProductListPage = () => {
                     </Button>
                 </div>
                 
+            <Error error={["xd"]}></Error>
 
             </Grid>
             <Dialog open={isFormOpen} onClose={handleFormClose}>
@@ -116,7 +118,7 @@ const ProductListPage = () => {
                 </DialogContent>
             </Dialog>
             <Box >
-                {categories.map((category, index) => (
+                {categories ? categories.map((category, index) => (
                     <div
                         className="category-products-tab"
                         key={`category-tabpanel-${index}`}
@@ -130,12 +132,12 @@ const ProductListPage = () => {
                         </Grid>
 
                     </div>
-                ))}
+                )) : <></>}
                 <div
                     className="all-products-tab"
                     key={`all-products-tabpanel`}
                     role="tabpanel"
-                    hidden={tabIndex !== categories.length}
+                    hidden={tabIndex !== (categories ? categories.length : 0)}
                     id={`all-products-tabpanel`}
                     aria-labelledby={`all-products-tab`}
                     style={{ minWidth: '200px' }}

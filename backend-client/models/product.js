@@ -43,7 +43,9 @@ class Product {
   // Get product by ID
   static getById(id) {
     return new Promise((resolve, reject) => {
-      db.get('SELECT * FROM product WHERE id = ?', [id], (err, row) => {
+      db.get(`SELECT p.id, p.name, p.price, c.name as category_name, p.image 
+              FROM product p JOIN category c ON c.id = p.category_id 
+              WHERE p.id = ?`, [id], (err, row) => {
         if (err) {
           reject(err);
         } else {

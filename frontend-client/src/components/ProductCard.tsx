@@ -56,10 +56,6 @@ const ProductCard = ({ product, onDelete }: Props) => {
                         <Typography gutterBottom variant="h5" component="h2">
                             {product.name}
                         </Typography>
-                        
-                        <Typography gutterBottom variant="h6" component="h6">
-                            {product.category_name}
-                        </Typography>
                     </CardContent>
                 </CardActionArea>
                 <CardActions disableSpacing>

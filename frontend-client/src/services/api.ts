@@ -1,8 +1,10 @@
 import axios from 'axios';
 import { Product, NewProduct } from '../types/Product';
 import { Category } from '../types/Category';
+import interceptor from './Interceptor';
 
 const API_BASE_URL = 'http://localhost:3001/api';
+let interceptorHandler = interceptor
 
 export async function fetchProducts(): Promise<Product[]> {
   const response = await axios.get(`${API_BASE_URL}/products`);
@@ -26,4 +28,4 @@ export async function deleteProduct(productId: number): Promise<void> {
 export async function fetchProductById(productId: number): Promise<Product> {
     const response = await axios.get(`${API_BASE_URL}/products/${productId}`);
     return response.data;
-  }
+}

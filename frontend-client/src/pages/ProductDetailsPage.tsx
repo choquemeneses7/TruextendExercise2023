@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { Box, CircularProgress, Grid, Typography } from "@material-ui/core";
+import { Box, CircularProgress, makeStyles, Typography } from "@material-ui/core";
 import { Product } from "../types/Product";
 import ProductDetails from "../components/ProductDetails";
 import { fetchProductById } from "../services/api";

@@ -5,6 +5,7 @@ import { Category } from "../types/Category";
 import axios from "axios";
 import { createProduct } from "../services/api";
 import { NewProduct } from '../types/Product';
+import Error from "./Error";
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -28,6 +29,7 @@ const CreateProductForm: React.FC<Props> = ({ categories, onCreate }) => {
   const [price, setPrice] = useState<number | "">(0);
   const [categoryId, setCategoryId] = useState<number | "">("");
   const [image, setImage] = useState<string>("");
+  const [serverErrors, setServerErrors] = useState<string[]>([]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -46,7 +48,7 @@ const CreateProductForm: React.FC<Props> = ({ categories, onCreate }) => {
       setCategoryId("");
       setImage("");
     } catch (error) {
-      console.log(error);
+        console.log("exrror: ", error)
     }
   };
 
