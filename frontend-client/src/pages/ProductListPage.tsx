@@ -8,7 +8,6 @@ import { fetchProducts, fetchCategories } from "../services/api";
 import { Box, CircularProgress, Grid, Button, Dialog, DialogTitle, DialogContent } from "@material-ui/core";
 import CreateProductForm from "../components/CreateProductForm";
 import './ProductListPage.css'
-import Error from "../components/Error";
 
 const ProductListPage = () => {
     const [tabIndex, setTabIndex] = useState(0);
@@ -107,9 +106,6 @@ const ProductListPage = () => {
                             Create
                     </Button>
                 </div>
-                
-            <Error error={["xd"]}></Error>
-
             </Grid>
             <Dialog open={isFormOpen} onClose={handleFormClose}>
                 <DialogTitle>Create New Product</DialogTitle>
