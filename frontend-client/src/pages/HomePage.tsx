@@ -50,7 +50,7 @@ const HomePage = () => {
           <div className={classes.heroButtons}>
             <Grid container spacing={2} justify="center">
               <Grid item>
-                <Button variant="contained" color="primary" component={Link} to="/products">
+                <Button data-testid="goToProducts" variant="contained" color="primary" component={Link} to="/products">
                   See Products Catalog
                 </Button>
               </Grid>
@@ -88,13 +88,11 @@ const HomePage = () => {
           </Grid>
         </Grid>
       </Container>
-      {/* Footer */}
       <footer className={classes.footer}>
         <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
           A simple exercise website built with React and Material-UI.
         </Typography>
       </footer>
-      {/* End footer */}
     </React.Fragment>
   );
 };

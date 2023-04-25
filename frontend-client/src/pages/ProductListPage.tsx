@@ -8,6 +8,7 @@ import { fetchProducts, fetchCategories } from "../services/api";
 import { Box, CircularProgress, Grid, Button, Dialog, DialogTitle, DialogContent } from "@material-ui/core";
 import CreateProductForm from "../components/CreateProductForm";
 import './ProductListPage.css'
+import ErrorHandler from './../components/ErrorHandler';
 
 const ProductListPage = () => {
     const [tabIndex, setTabIndex] = useState(0);
@@ -15,6 +16,7 @@ const ProductListPage = () => {
     const [categories, setCategories] = useState<Category[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [isFormOpen, setIsFormOpen] = useState(false);
+    const [error, setError] = useState<Error | null>(null);
 
     useEffect(() => {
         fetchProductsData();
@@ -22,14 +24,22 @@ const ProductListPage = () => {
     }, []);
 
     async function fetchProductsData() {
-        const productList = await fetchProducts();
-        productList ? setProducts(productList) : setProducts([]);
-        setIsLoading(false);
+        try {
+            const productList = await fetchProducts();
+            productList ? setProducts(productList) : setProducts([]);
+            setIsLoading(false);
+        } catch (error) {
+            setError(error as Error);
+        }
     }
 
     async function fetchCategoriesData() {
-        const categoryList = await fetchCategories();
-        categoryList ? setCategories(categoryList) : setCategories([]);
+        try {
+            const categoryList = await fetchCategories();
+            categoryList ? setCategories(categoryList) : setCategories([]);
+        } catch (error) {
+            setError(error as Error);
+        }
     }
 
 
@@ -54,7 +64,7 @@ const ProductListPage = () => {
         } else {
             return categoryProducts.map((product) => (
                 <Grid item key={product.id} xs={12} sm={6} md={4}>
-                    <ProductCard key={product.id} product={product} onDelete={handleOnCreateProduct}/>
+                    <ProductCard key={product.id} product={product} onDelete={handleOnCreateProduct} />
                 </Grid>
             ));
         }
@@ -103,7 +113,7 @@ const ProductListPage = () => {
                 </Grid>
                 <div className="create-button">
                     <Button id="create" variant="contained" color="primary" onClick={handleFormOpen}>
-                            Create
+                        Create
                     </Button>
                 </div>
             </Grid>
@@ -138,7 +148,7 @@ const ProductListPage = () => {
                     aria-labelledby={`all-products-tab`}
                     style={{ minWidth: '200px' }}
                 >
-                    <Grid 
+                    <Grid
                         container
                         alignItems="center"
                         justifyContent="center"
@@ -146,7 +156,8 @@ const ProductListPage = () => {
                         {renderProductCards("All")}
                     </Grid>
                 </div>
-            </Box>
+            </Box>  
+            <ErrorHandler error={error}></ErrorHandler>
         </div>
     );
 };

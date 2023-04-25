@@ -1,0 +1,11 @@
+{
+    "homepageWelcome": "Welcome to Products Catalog, a funny catalog for a possible interview! ",
+    "homepageTitle": "My Products Catalog",
+    "homepageSeeProducts": "See Products Catalog",
+    "homepageReactComponent": "React + MUI",
+    "homepageReactComponentDescription": "Frontend project was made with React and MUI, in addition to some other complements and libraries.",
+    "homepageExpressComponent": "ExpressJS",
+    "homepageExpressComponentDescription": "Backend project was made with ExpressJS, in addition to some other complements and libraries.",
+    "footerMessage": "A simple exercise website built with React and Material-UI."
+  }
+  
