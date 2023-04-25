@@ -5,6 +5,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
 import React, { useState } from "react";
 import { deleteProduct } from "../services/api";
+import { useTranslation } from 'react-i18next';
 
 const useStyles = makeStyles({
     root: {
@@ -25,6 +26,7 @@ const ProductCard = ({ product, onDelete }: Props) => {
     const navigate = useNavigate();
     const [isCancelDialogOpen, setIsCancelDialogOpen] = useState(false);
     const [productIdToDelete, setProductIdToDelete] = useState(0);
+    const { t } = useTranslation();
 
     const handleClick = () => {
         navigate(`/products/${product.id}`);
@@ -66,16 +68,16 @@ const ProductCard = ({ product, onDelete }: Props) => {
                 </CardActions>
             </Card>
             <Dialog open={isCancelDialogOpen} onClose={handleCancelDialogClose}>
-                <DialogTitle>Delete Product</DialogTitle>
+                <DialogTitle>{t('productCardComponentDialogTitle')}</DialogTitle>
                 <DialogContent>
-                    You will delete the product, are you sure?
+                {t('productCardComponentDialogContent')}
                 </DialogContent>
                 <DialogActions>
                     <Button autoFocus color="secondary" onClick={handleCancelDialogClose}>
-                        Cancel
+                    {t('productCardComponentDialogCancel')}
                     </Button>
                     <Button autoFocus color="primary" onClick={deleteProductById} >
-                        Confirm
+                    {t('productCardComponentDialogConfirm')}
                     </Button>
                 </DialogActions>
             </Dialog>

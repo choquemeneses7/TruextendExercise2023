@@ -2,17 +2,19 @@ import { Box, Button, Card, CardContent, CardMedia, Typography } from "@material
 import { Link } from "react-router-dom";
 import { Product } from "../types/Product";
 import './ProductDetails.css'
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   product: Product;
 };
 
 const ProductDetails = ({ product }: Props) => {
+  const { t } = useTranslation();
   return (
     <Box className="product-detail-container">
       <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
         <Typography variant="h4">{product.name}</Typography>
-        <Typography variant="h6">Price: {product.price}€</Typography>
+        <Typography variant="h6">{t('productDetailsComponentPrice')} {product.price}€</Typography>
       </Box>
       <Box display="flex" justifyContent="center" alignItems="center" mb={4}>
         <Card style={{ maxWidth: "600px" }}>
@@ -29,7 +31,7 @@ const ProductDetails = ({ product }: Props) => {
       </Box>
       <Box display="flex" justifyContent="flex-end">
         <Button variant="contained" color="primary" component={Link} to="/products">
-          Back to products
+          {t('productDetailsComponentBack')}
         </Button>
       </Box>
     </Box>

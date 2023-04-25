@@ -3,6 +3,7 @@ import { Button, TextField, Select, MenuItem, InputLabel, FormControl, makeStyle
 import { Category } from "../types/Category";
 import { createProduct } from "../services/api";
 import { NewProduct } from '../types/Product';
+import { useTranslation } from 'react-i18next';
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -26,6 +27,7 @@ const CreateProductForm: React.FC<Props> = ({ categories, onCreate }) => {
   const [price, setPrice] = useState<number | "">(0);
   const [categoryId, setCategoryId] = useState<number | "">("");
   const [image, setImage] = useState<string>("");
+  const { t } = useTranslation();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -66,7 +68,7 @@ const CreateProductForm: React.FC<Props> = ({ categories, onCreate }) => {
         onChange={(e) => setPrice(parseFloat(e.target.value) as number)}
       />
       <FormControl className={classes.formControl}>
-        <InputLabel id="category">Category</InputLabel>
+        <InputLabel id="category">{t('CreateProductFormComponentCategory')}</InputLabel>
         <Select
           label="category"
           required

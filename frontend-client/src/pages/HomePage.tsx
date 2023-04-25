@@ -5,6 +5,7 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import { useTranslation } from 'react-i18next';
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -36,22 +37,23 @@ const useStyles = makeStyles((theme) =>
 
 const HomePage = () => {
   const classes = useStyles();
+  const { t } = useTranslation();
 
   return (
     <React.Fragment>
       <div className={classes.heroContent}>
         <Container maxWidth="sm">
           <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-            My Products Catalog
+            {t('homepageTitle')}
           </Typography>
           <Typography variant="h5" align="center" color="textSecondary" paragraph>
-            Welcome to Products Catalog, a funny catalog for a possible interview!
+            {t('homepageWelcome')}
           </Typography>
           <div className={classes.heroButtons}>
-            <Grid container spacing={2} justify="center">
+            <Grid container spacing={2} justifyContent="center">
               <Grid item>
                 <Button data-testid="goToProducts" variant="contained" color="primary" component={Link} to="/products">
-                  See Products Catalog
+                  {t('homepageSeeProducts')}
                 </Button>
               </Grid>
             </Grid>
@@ -64,11 +66,10 @@ const HomePage = () => {
             <div className={classes.card}>
               <div className={classes.cardContent}>
                 <Typography gutterBottom variant="h5" component="h2">
-                  React + MUI
+                  {t('homepageReactComponent')}
                 </Typography>
                 <Typography>
-                  Frontend project was made with React and MUI
-                  in addition to some other complements and libraries.
+                  {t('homepageReactComponentDescription')}
                 </Typography>
               </div>
             </div>
@@ -77,11 +78,10 @@ const HomePage = () => {
             <div className={classes.card}>
               <div className={classes.cardContent}>
                 <Typography gutterBottom variant="h5" component="h2">
-                  ExpressJS
+                  {t('homepageExpressComponent')}
                 </Typography>
                 <Typography>
-                  Backend project was made with ExpressJS
-                  in addition to some other complements and libraries.
+                  {t('homepageExpressComponentDescription')}
                 </Typography>
               </div>
             </div>
@@ -90,7 +90,7 @@ const HomePage = () => {
       </Container>
       <footer className={classes.footer}>
         <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
-          A simple exercise website built with React and Material-UI.
+          {t('footerMessage')}
         </Typography>
       </footer>
     </React.Fragment>

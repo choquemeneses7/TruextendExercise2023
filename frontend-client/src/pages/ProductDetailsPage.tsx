@@ -5,12 +5,14 @@ import { Product } from "../types/Product";
 import ProductDetails from "../components/ProductDetails";
 import { fetchProductById } from "../services/api";
 import ErrorHandler from './../components/ErrorHandler';
+import { useTranslation } from 'react-i18next';
 
 const ProductDetailsPage = () => {
     const { productId } = useParams<{ productId: string }>();
     const [product, setProduct] = useState<Product | null>(null);
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [error, setError] = useState<Error | null>(null);
+    const { t } = useTranslation();
 
     useEffect(() => {
         const fetchProduct = async () => {
@@ -35,7 +37,7 @@ const ProductDetailsPage = () => {
             ) : product ? (
                 <ProductDetails product={product} />
             ) : (
-                <Typography variant="h4">Product not found.</Typography>
+                <Typography variant="h4">{t('productDetailsPageNotFound')}</Typography>
             )}
             <ErrorHandler error={error}></ErrorHandler>
         </Box>
