@@ -7,6 +7,7 @@
 /frontend-client/.pnp
 /backend-client/.pnp
 .pnp.js
+/backend-client/catalog.db
 
 # testing
 /coverage
