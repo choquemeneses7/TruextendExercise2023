@@ -25,7 +25,7 @@ This is a simple product catalog application built with React and ExpressJS. It 
 ```sh
 ### Change to the Frontend app subdirectory
 cd frontend-client
-### Install dependencies set on legacy peer deps to have compatible MUI with latest release of React 18.2
+### Install dependencies set on legacy peer deps to have compatible MUI with latest release of React 18.2 (If we want to avoid this flag we need to downgrade the version of react to 16 or 17)
 npm install --legacy-peer-deps
 
 ### Run tests
